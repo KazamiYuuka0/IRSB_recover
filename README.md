@@ -9,7 +9,7 @@ IRSB Recovery
 3.	提供由IRSB.statements.__str__格式向IRSB格式转化的功能。（*）这个功能需要根据格式微调才能使用。这个功能支持由GPT3.5/GPT4o产生的主要返回格式。
 4.	提供简易访问器，只需将需要分析的文件置于工作目录，就可以批量读取和显示信息。
 
-文件结构
+文件结构（网页版可能不能正确显示\t）
 Invert.py					IRSBstr->IRSB转化程序
 Measure4_targetonly.py	hook接口（*）和测量程序
 IRSBout_multi.py			批量化读取程序
