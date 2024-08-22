@@ -1,0 +1,134 @@
+GPT3.5-2
+《从错误的位置（第一个栈调用）开始替换，导致部分语句丢失》
+00 | ------ IMark(0x4011e9, 4, 0) ------
+   01 | PUT(rip) = 0x00000000004011ed
+   02 | ------ IMark(0x4011ed, 1, 0) ------
+   03 | t0 = GET:I64(rbp)
+   04 | t60 = GET:I64(rsp)
+   05 | t59 = Sub64(t60,0x0000000000000008)
+   06 | PUT(rsp) = t59
+   07 | STle(t59) = t0
+   08 | ------ IMark(0x4011ee, 3, 0) ------
+   09 | PUT(rbp) = t59
+   10 | PUT(rip) = 0x00000000004011f1
+   11 | ------ IMark(0x4011f1, 3, 0) ------
+   12 | t62 = Add64(t59,0xffffffffffffffec)
+   13 | t65 = GET:I64(rdi)
+   14 | t64 = 64to32(t65)
+   15 | STle(t62) = t64
+   16 | PUT(rip) = 0x00000000004011f4
+   17 | ------ IMark(0x4011f4, 7, 0) ------
+   18 | t66 = Add64(t59,0xfffffffffffffff8)
+   19 | STle(t66) = 0x00000000
+   20 | PUT(rip) = 0x00000000004011fb
+   21 | ------ IMark(0x4011fb, 7, 0) ------
+   22 | t68 = Add64(t59,0xfffffffffffffffc)
+   23 | STle(t68) = 0x00000000
+   24 | PUT(rip) = 0x0000000000401202
+   25 | ------ IMark(0x401202, 3, 0) ------
+   26 | t70 = Add64(t59,0xffffffffffffffec)
+   27 | t73 = LDle:I32(t70)
+   28 | t72 = 32Uto64(t73)
+   29 | t122 = 32HLto64(t72,0x000003e7) // Convert to a 64-bit value
+   30 | t123 = CmpEQ32(t72,0x000003e7) // Check if t72 == 99999
+   31 | if (t123) { PUT(rip) = 0x401208; Ijk_SigFPE_IntDiv }
+   32 | t124 = DivModS64to32(t122,0x000003e7) // Perform division
+   33 | t125 = 64to32(t124) // Lower part of result
+   34 | t126 = 64HIto32(t124) // Higher part of result
+   35 | PUT(rdx) = t126 // Store remainder in rdx
+   36 | PUT(rax) = t125 // Store quotient in rax
+   37 | PUT(rip) = 0x0000000000401208
+   38 | ------ IMark(0x401208, 4, 0) ------
+   39 | t81 = Add64(t59,0xfffffffffffffffc)
+   40 | t83 = 64to32(t125)
+   41 | STle(t81) = t83
+   42 | PUT(rip) = 0x000000000040120a
+   43 | ------ IMark(0x40120a, 3, 0) ------
+   44 | t85 = Add64(t59,0xfffffffffffffffc)
+   45 | t10 = LDle:I32(t85)
+   46 | t87 = 32Uto64(t10)
+   47 | t14 = Shl64(t87,0x01)
+   48 | t97 = 64to32(t14)
+   49 | STle(t85) = t97
+   50 | PUT(rip) = 0x000000000040120d
+   51 | ------ IMark(0x40120d, 3, 0) ------
+   52 | t98 = Add64(t59,0xffffffffffffffec)
+   53 | t101 = LDle:I32(t98)
+   54 | t100 = 32Uto64(t101)
+   55 | ------ IMark(0x401210, 3, 0) ------
+   56 | t103 = 64to32(t100)
+   57 | t102 = 32Sto64(t103)
+   58 | ------ IMark(0x401213, 7, 0) ------
+   59 | t21 = Mul64(t102,0x0000000029f1868f)
+   60 | ------ IMark(0x40121a, 4, 0) ------
+   61 | t25 = Shr64(t21,0x20)
+   62 | ------ IMark(0x40121e, 3, 0) ------
+   63 | t114 = 64to32(t25)
+   64 | t116 = 32Sto64(t114)
+   65 | t32 = Sar64(t116,0x0e)
+   66 | t126 = 64to32(t32)
+   67 | t127 = 32Uto64(t126)
+   68 | ------ IMark(0x401221, 3, 0) ------
+   69 | t128 = 64to32(t100)
+   70 | t130 = 32Sto64(t128)
+   71 | t39 = Sar64(t130,0x1f)
+   72 | t140 = 64to32(t39)
+   73 | t141 = 32Uto64(t140)
+   74 | ------ IMark(0x401224, 2, 0) ------
+   75 | t142 = 64to32(t127)
+   76 | t144 = 64to32(t141)
+   77 | t43 = Sub32(t142,t144)
+   78 | t148 = 32Uto64(t43)
+   79 | ------ IMark(0x401226, 2, 0) ------
+   80 | t150 = 64to32(t148)
+   81 | t149 = 32Uto64(t150)
+   82 | PUT(rip) = 0x0000000000401228
+   83 | ------ IMark(0x401228, 3, 0) ------
+   84 | t152 = Add64(t59,0xfffffffffffffff8)
+   85 | t154 = 64to32(t149)
+   86 | STle(t152) = t154
+   87 | PUT(rip) = 0x000000000040122b
+   88 | ------ IMark(0x40122b, 3, 0) ------
+   89 | t156 = Add64(t59,0xffffffffffffffec)
+   90 | t159 = LDle:I32(t156)
+   91 | t158 = 32Uto64(t159)
+   92 | PUT(rdx) = t158
+   93 | PUT(rip) = 0x000000000040122e
+   94 | ------ IMark(0x40122e, 3, 0) ------
+   95 | t160 = Add64(t59,0xfffffffffffffff8)
+   96 | t163 = LDle:I32(t160)
+   97 | t162 = 32Uto64(t163)
+   98 | ------ IMark(0x401231, 2, 0) ------
+   99 | t164 = 64to32(t162)
+  100 | t166 = 64to32(t158)
+  101 | t49 = Add32(t164,t166)
+  102 | PUT(cc_op) = 0x0000000000000003
+  103 | t168 = 32Uto64(t164)
+  104 | PUT(cc_dep1) = t168
+  105 | t169 = 32Uto64(t166)
+  106 | PUT(cc_dep2) = t169
+  107 | t170 = 32Uto64(t49)
+  108 | PUT(rip) = 0x0000000000401233
+  109 | ------ IMark(0x401233, 3, 0) ------
+  110 | t171 = Add64(t59,0xfffffffffffffffc)
+  111 | t173 = 64to32(t170)
+  112 | STle(t171) = t173
+  113 | PUT(rip) = 0x0000000000401236
+  114 | ------ IMark(0x401236, 3, 0) ------
+  115 | t175 = Add64(t59,0xfffffffffffffff8)
+  116 | t178 = LDle:I32(t175)
+  117 | t177 = 32Uto64(t178)
+  118 | PUT(rax) = t177
+  119 | PUT(rip) = 0x0000000000401239
+  120 | ------ IMark(0x401239, 1, 0) ------
+  121 | t54 = LDle:I64(t59)
+  122 | t179 = Add64(t59,0x0000000000000008)
+  123 | PUT(rsp) = t179
+  124 | PUT(rbp) = t54
+  125 | PUT(rip) = 0x000000000040123a
+  126 | ------ IMark(0x40123a, 1, 0) ------
+  127 | t57 = LDle:I64(t179)
+  128 | t58 = Add64(t179,0x0000000000000008)
+  129 | PUT(rsp) = t58
+  130 | t180 = Sub64(t58,0x0000000000000080)
+  131 | ====== AbiHint(0xt180, 128, t57) ======
